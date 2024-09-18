@@ -20,26 +20,26 @@ html_template = '''
             background-color: #161616;
             color: #ececec;
             font-family: Tahoma, sans-serif;
-            margin: 18px;
+            margin: 20px;
         }}
         .gallery {{
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
         }}
         .gallery img {{
             width: 100%;
             height: auto;
-            border: 2px solid #444;
-            border-radius: 8px;
+            border: 5px solid #444;
+            border-radius: 10px;
         }}
         .gallery-info {{
             text-align: center;
-            margin-top: 18px;
+            margin-top: 20px;
         }}
         footer {{
             text-align: center;
-            margin-top: 28px;
+            margin-top: 30px;
             color: #5e5e5e;
         }}
         a {{
@@ -93,11 +93,11 @@ def get_gallery_data():
             gallery_data[dir_name] = images
     return gallery_data
 
-def create_thumbnail(image_path, thumb_path, size=(160, 160)):
+def create_thumbnail(image_path, thumb_path, size=(150, 150)):
     try:
         with Image.open(image_path) as img:
             img.thumbnail(size)
-            img.save(thumb_path, "webp", quality=88)
+            img.save(thumb_path, "jpg", quality=95)
     except Exception as e:
         print(f"Error creating thumbnail for {image_path}: {e}")
 
