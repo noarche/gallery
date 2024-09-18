@@ -28,7 +28,7 @@ Everything will be automatically generated on first run. (Album name will be the
 
 If you do not have a web host or software installed go to the directory where index.html is located and open in terminal
 
-use command `python3 -m http.server` or `python -m http.server` to start web hosting with python.
+use command `python3 -m http.server 8080` or `python -m http.server 8080` to start web hosting on port 8080 (http://localhost:8080) with python.
 
 
 
