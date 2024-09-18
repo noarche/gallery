@@ -26,7 +26,9 @@ Clone this directory:
 
 Everything will be automatically generated on first run. (Album name will be the same as directory name.)
 
-If you do not have a web host or software installed go to the directory where index.html is located and open in terminal
+You do not need web host to view on your own computer. Simply add a shortcut to index.html to your desktop.
+
+If you do not have a web host or software installed and want to view from another machine go to the directory where index.html is located and open in terminal
 
 use command `python3 -m http.server 8080` or `python -m http.server 8080` to start web hosting on port 8080 (http://localhost:8080) with python.
 
