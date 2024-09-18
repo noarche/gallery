@@ -4,7 +4,7 @@
 
 paste all files here into www root dir of your web server before running script
 
-paste your albums in directories in ./galleryRoot 
+paste your albums in directories in ./galleryRoot or change line 6 to reflect the directory you want to use. 
 
 To delete or add photos physically remove or add photo to the album and run script again to update all pages. 
 
