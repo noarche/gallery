@@ -97,7 +97,7 @@ def create_thumbnail(image_path, thumb_path, size=(160, 160)):
     try:
         with Image.open(image_path) as img:
             img.thumbnail(size)
-            img.save(thumb_path, "webp", quality=77)
+            img.save(thumb_path, "webp", quality=88)
     except Exception as e:
         print(f"Error creating thumbnail for {image_path}: {e}")
 
