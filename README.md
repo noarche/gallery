@@ -26,7 +26,9 @@ Clone this directory:
 
 Everything will be automatically generated on first run. (Album name will be the same as directory name.)
 
+If you do not have a web host or software installed go to the directory where index.html is located and open in terminal
 
+use command `python3 -m http.server` or `python -m http.server` to start web hosting with python.
 
 
 
