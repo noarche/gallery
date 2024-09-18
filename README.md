@@ -1,12 +1,12 @@
 ![gallery](https://github.com/user-attachments/assets/a6cd55dd-4d2b-41f4-993c-058e5e343bf5)
 
-# HOW TO USE:
+# ꧁꧂  HOW TO USE:
 
-### paste all files here into www root dir of your web server before running script
+paste all files here into www root dir of your web server before running script
 
-### paste your albums in directories in ./galleryRoot 
+paste your albums in directories in ./galleryRoot 
 
-
+To delete or add photos physically remove or add photo to the album and run script again to update all pages. 
 
 ### run the following command
 
@@ -20,9 +20,11 @@
 
 
 
-### Everything will be automatically generated on first run. (Album name will be the same as directory name.)
+# ꧁꧂  Notes
 
-### To delete or add photos physically remove or add photo to the album and run script again to update all pages. 
+Everything will be automatically generated on first run. (Album name will be the same as directory name.)
+
+
 
 
 
