@@ -5,68 +5,16 @@ from PIL import Image
 # Directory paths
 gallery_root = './galleryRoot/'
 thumbs_dir = './thumbs/'
+template_path = './src/template.html'
 
-# HTML Template
-html_template = '''
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>{title}</title>
-    <style>
-        body {{
-            background-color: #161616;
-            color: #ececec;
-            font-family: Tahoma, sans-serif;
-            margin: 20px;
-        }}
-        .gallery {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }}
-        .gallery img {{
-            width: 100%;
-            height: auto;
-            border: 5px solid #444;
-            border-radius: 10px;
-        }}
-        .gallery-info {{
-            text-align: center;
-            margin-top: 20px;
-        }}
-        footer {{
-            text-align: center;
-            margin-top: 30px;
-            color: #5e5e5e;
-        }}
-        a {{
-            color: #1db954;
-            text-decoration: none;
-        }}
-        a:hover {{
-            color: #1db954;
-            text-decoration: underline;
-        }}
-    </style>
-</head>
-<body>
-    <h1>{title}</h1>
-    <div class="gallery">
-        {thumbnails}
-    </div>
-    <div class="gallery-info">
-        <p>Total Images: {total_images}</p>
-        <p>Gallery Size: {gallery_size}</p>
-    </div>
-    <footer>
-        Latest Update: {last_updated}
-    </footer>
-</body>
-</html>
-'''
+def load_template():
+    """Load the HTML template from the specified file."""
+    try:
+        with open(template_path, 'r', encoding='utf-8') as template_file:
+            return template_file.read()
+    except FileNotFoundError:
+        print(f"Error: Template file {template_path} not found.")
+        return ''
 
 def human_readable_size(size):
     for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
@@ -134,6 +82,8 @@ def create_gallery_page(gallery_name, images):
     gallery_size = human_readable_size(get_directory_size(gallery_dir))
     last_updated = time.strftime('%A %B %d %Y %H:%M')
 
+    html_template = load_template()
+
     html_content = html_template.format(
         title=gallery_name,
         thumbnails=thumbnails_html,
@@ -167,6 +117,8 @@ def create_index_page(gallery_data):
 
     last_updated = time.strftime('%A %B %d %Y %H:%M')
     gallery_size = human_readable_size(total_size)
+
+    html_template = load_template()
 
     index_html_content = html_template.format(
         title="Gallery Albums",
