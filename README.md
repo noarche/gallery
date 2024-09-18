@@ -1,12 +1,14 @@
 ![gallery](https://github.com/user-attachments/assets/a6cd55dd-4d2b-41f4-993c-058e5e343bf5)
 
 # ꧁꧂  HOW TO USE:
+Clone this directory:
+`git clone https://github.com/noarche/gallery`
 
-paste all files here into www root dir of your web server before running script
+1. paste all files in repo into www root dir of your web server before running script
+                    
+2. paste your albums in directories in ./galleryRoot OR change line 6 of gallery.py to reflect the correct directory. 
 
-paste your albums in directories in ./galleryRoot or change line 6 to reflect the directory you want to use. 
-
-To delete or add photos physically remove or add photo to the album and run script again to update all pages. 
+3. To delete or add photos physically remove or add photo to the album/directory from step 2 & run script to update all pages. 
 
 ### run the following command
 
