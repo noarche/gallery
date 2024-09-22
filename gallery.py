@@ -45,7 +45,13 @@ def create_thumbnail(image_path, thumb_path, size=(150, 150)):
     try:
         with Image.open(image_path) as img:
             img.thumbnail(size)
-            img.save(thumb_path, "jpg", quality=95)
+
+            # Ensure thumbnail directory exists
+            if not os.path.exists(os.path.dirname(thumb_path)):
+                os.makedirs(os.path.dirname(thumb_path))
+            
+            # Save thumbnail in the same format as the original file
+            img.save(thumb_path, img.format, quality=95)
     except Exception as e:
         print(f"Error creating thumbnail for {image_path}: {e}")
 
@@ -55,12 +61,8 @@ def create_thumbnails(image_paths, gallery_dir):
     for img_file in image_paths:
         img_path = os.path.join(gallery_dir, img_file)
 
-        # Ensure thumbnail directory exists
-        if not os.path.exists(thumbs_dir):
-            os.makedirs(thumbs_dir)
-
-        # Path to store the thumbnail
-        thumb_file = f"{os.path.splitext(img_file)[0]}_thumb.jpg"
+        # Path to store the thumbnail (same format as original)
+        thumb_file = f"{os.path.splitext(img_file)[0]}_thumb.{img_file.split('.')[-1]}"
         thumb_path = os.path.join(thumbs_dir, thumb_file)
 
         # Create the thumbnail if it doesn't exist
@@ -109,7 +111,7 @@ def create_index_page(gallery_data):
 
             # Reference the most recent image thumbnail
             gallery_dir = os.path.join(gallery_root, gallery_name)
-            thumb_file = f"{os.path.splitext(latest_image)[0]}_thumb.jpg"
+            thumb_file = f"{os.path.splitext(latest_image)[0]}_thumb.{latest_image.split('.')[-1]}"
             thumbnail = os.path.join(thumbs_dir, thumb_file)
 
             # Link to the individual gallery pages
