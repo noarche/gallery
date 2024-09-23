@@ -54,8 +54,8 @@ use command `python3 -m http.server 8080` or `python -m http.server 8080` to sta
 
 ![noarche's GitHub stats](https://github-readme-stats.vercel.app/api?username=noarche&show_icons=true&theme=transparent)
 
-# Looking for a RSS Reader?
+# Want to convert all your images to webp format to save a ton of space? This script does so without compressing your images. 
 
-Check out my [RSS reader](https://github.com/noarche/rss) script that generates a website to be viewed from computer or mobile device.
+Check out my [Batch Convert Img to and Batch Resize Scripts here](https://github.com/noarche/BatchConvertDirs2Webp) 
 
 
