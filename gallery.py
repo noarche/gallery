@@ -62,7 +62,7 @@ html_template = '''
         <p>Gallery Size: {gallery_size}</p>
     </div>
     <footer>
-       Private Photo Collection | 2024-2025 | Latest Update: {last_updated}
+       Latest Update: {last_updated}
     </footer>
 </body>
 </html>
@@ -97,7 +97,7 @@ def create_thumbnail(image_path, thumb_path, size=(400, 400)):
     try:
         with Image.open(image_path) as img:
             img.thumbnail(size)
-            img.save(thumb_path, "webp", quality=94)
+            img.save(thumb_path, "webp", quality=85)
     except Exception as e:
         print(f"Error creating thumbnail for {image_path}: {e}")
 
@@ -112,7 +112,7 @@ def create_thumbnails(image_paths, gallery_dir):
             os.makedirs(thumbs_dir)
 
         # Path to store the thumbnail
-        thumb_file = f"{os.path.splitext(img_file)[0]}_thumb.jpg"
+        thumb_file = f"{os.path.splitext(img_file)[0]}_thumb.webp"
         thumb_path = os.path.join(thumbs_dir, thumb_file)
 
         # Create the thumbnail if it doesn't exist
@@ -146,7 +146,7 @@ def create_gallery_page(gallery_name, images):
     with open(f"{gallery_name}.html", 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-def create_index_page(gallery_data):
+def create_index_page(gallery_data, site_name):
     thumbnails_html = ""
     total_images = 0
     total_size = 0
@@ -159,7 +159,7 @@ def create_index_page(gallery_data):
 
             # Reference the most recent image thumbnail
             gallery_dir = os.path.join(gallery_root, gallery_name)
-            thumb_file = f"{os.path.splitext(latest_image)[0]}_thumb.jpg"
+            thumb_file = f"{os.path.splitext(latest_image)[0]}_thumb.webp"
             thumbnail = os.path.join(thumbs_dir, thumb_file)
 
             # Link to the individual gallery pages
@@ -169,7 +169,7 @@ def create_index_page(gallery_data):
     gallery_size = human_readable_size(total_size)
 
     index_html_content = html_template.format(
-        title="Private Photo Albums",
+        title=site_name,
         thumbnails=thumbnails_html,
         total_images=total_images,
         gallery_size=gallery_size,
@@ -181,6 +181,7 @@ def create_index_page(gallery_data):
         f.write(index_html_content)
 
 def main():
+    site_name = input("Enter the site name (leave blank for 'Gallery'): ") or "Gallery"
     gallery_data = get_gallery_data()
 
     # Create individual gallery pages
@@ -188,8 +189,7 @@ def main():
         create_gallery_page(gallery_name, images)
 
     # Create index page
-    create_index_page(gallery_data)
+    create_index_page(gallery_data, site_name)
 
 if __name__ == "__main__":
     main()
-
